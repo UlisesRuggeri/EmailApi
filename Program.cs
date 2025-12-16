@@ -21,11 +21,10 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod());
 });
 
-var app = builder.Build();
-
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 builder.WebHost.UseUrls($"http://+:{port}");
 
+var app = builder.Build();
 
 app.UseCors("AllowAll");
 
@@ -34,6 +33,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
     app.UseDeveloperExceptionPage();
 }
+
 app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();

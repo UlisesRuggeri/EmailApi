@@ -11,6 +11,7 @@ public class EmailService : IEmailService
     public EmailService(IConfiguration config)
     {
         var apiKey = config.GetValue<string>("Resend:ApiKey");
+        Console.WriteLine($"API Key Loaded: {apiKey}");
         _resend = ResendClient.Create(apiKey!);
     }
 

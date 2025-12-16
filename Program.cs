@@ -23,6 +23,8 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+builder.WebHost.UseUrls("http://+:8080");
+
 app.UseCors("AllowAll");
 
 if (app.Environment.IsDevelopment())
